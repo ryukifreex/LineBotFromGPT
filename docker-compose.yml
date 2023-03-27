@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/linebot
+    environment:
+      - LINE_CHANNEL_ACCESS_TOKEN
+      - LINE_CHANNEL_SECRET
+      - OPENAI_API_KEY
+      - REGISTERED_USERS
+    env_file:
+      - .env

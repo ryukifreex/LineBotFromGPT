@@ -1,0 +1,5 @@
+fastapi
+line-bot-sdk
+openai
+uvicorn
+python-dotenv
