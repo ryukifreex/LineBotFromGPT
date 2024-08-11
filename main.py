@@ -52,7 +52,8 @@ def handle_text_message(event):
 
     # ユーザーからのメッセージを取得
     input_text = event.message.text
-    # add_message = "という質問を「考え方」で回答してください"
+    # テキストに付与するメッセージ
+    # ex：add_message = "という質問に対してコーチング手法で回答してください"
     add_message=""
     prompt = f"User: {input_text}\n{add_message}\nChatGPT: "
 
