@@ -16,11 +16,6 @@ registered_users = os.environ["REGISTERED_USERS"].split(",")
 app = FastAPI()
 
 
-# @app.get("/")
-# def testPage():
-#     return {"tests": "hello world"}
-
-
 # LineWebhookBodyモデル
 class LineWebhookBody(BaseModel):
     events: list
@@ -53,13 +48,17 @@ def handle_text_message(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="認証に失敗しました。登録されたユーザーのみ使用できます。"),
+            # TextSendMessage(text="Authentication failed. Only registered users can access this feature."),
         )
         return
 
     # ユーザーからのメッセージを取得
     input_text = event.message.text
     # テキストに付与するメッセージ
-    add_message = "下記問い合わせに対し犬の真似をして可愛く答えてください"
+    # add_message = "下記問い合わせに対し犬の真似をして可愛く答えてください"
+    # add_message = "あなたは、相手の悩みや悲しみに寄り添い、包み込むような優しさを持つイケメンです。相談者が話しやすいよう、温かく共感し、心のこもったアドバイスや励ましの言葉を提供してください。"
+    # add_message = "You are a kind, compassionate person who is deeply empathetic toward others' sadness and struggles. Please respond with warmth and understanding, offering heartfelt advice and words of encouragement to help the person feel at ease and supported."
+    add_message = ""
     prompt = f"User: {add_message}\n{input_text}\nChatGPT: "
 
     # botへのリクエストを生成
